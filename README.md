@@ -1,0 +1,1 @@
+This small desktop application generates a prompt for text o image AI generators, with a focus on Stable Diffusion. 
