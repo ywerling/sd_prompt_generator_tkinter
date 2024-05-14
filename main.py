@@ -4,6 +4,7 @@ import random as rd
 
 import image_parameters as ip
 
+# hard coded UI parameters
 TEXT_COLOR = 'black'
 TEXT_FONT = 'arial.ttf'
 TEXT_SIZE = 12
@@ -28,11 +29,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.rowconfigure(6, weight=1)
         self.rowconfigure(7, weight=1)
 
-        # put widget on UI
-        # self.canvas = tk.Canvas(width=200, height=150, bg="#f7f5dd", highlightthickness=0)
-        # self.canvas.grid(row=1, column=1)
-        # self.start_button = tk.Button(width=10, height=1, text="Select Image", command=ask_directory)
-        # self.start_button.grid(column=0, row=0)
+        # create labels
         self.subject_label = tk.Label(self.parent,
                                            text="Subject:",
                                            font=(TEXT_FONT, TEXT_SIZE))
@@ -66,13 +63,14 @@ class SDPromptGeneratorApp(tk.Frame):
                                            font=(TEXT_FONT, TEXT_SIZE))
         self.feature_label.grid(row=7, column=0)
 
+        # create  text entry boxes
         self.subject_entry = tk.Entry(self.parent)
         self.subject_entry.grid(row=0, column=1)
         self.background_entry = tk.Entry(self.parent)
         self.background_entry.grid(row=1, column=1)
 
-        # print(ip.style_list[1])
 
+        # create drop down boxes
         self.style_list = ip.style_list
         self.style_var = tk.StringVar()
         self.style_var.set(ip.NONE_STRING)
@@ -109,6 +107,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.effect_menu = tk.OptionMenu(self.parent,self.effect_var,*self.effect_list)
         self.effect_menu.grid(row=7, column=1)
 
+        # create buttons
         self.generate_button = tk.Button(self.parent,text="Generate Prompt", command=self.GeneratePrompt)
         self.generate_button.grid(row=1, column=2)
 
@@ -121,6 +120,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.clear_button = tk.Button(self.parent,text="Clear", command=self.Clear)
         self.clear_button.grid(row=4, column=2)
 
+        #create prompt editor
         self.prompt_text = tk.Text(self.parent, height=8)
         self.prompt_text.grid(row=2, column=3)
 
@@ -128,43 +128,51 @@ class SDPromptGeneratorApp(tk.Frame):
     #     return value
 
     def GeneratePrompt(self):
-        # print("Generate Prompt")
-        # self.prompt_text.insert('1.0',"test")
+        self.prompt_text.delete('1.0', tk.END)
+
+        # start with the subject
         subject_text=self.subject_entry.get()
         if len(subject_text)>0:
             subject_text+=", "
         self.prompt_text.insert(tk.END,subject_text)
 
+        # specify the background
         background_text = self.background_entry.get()
         if len(background_text) > 0:
             background_text += " in the background"
         self.prompt_text.insert(tk.END, background_text)
 
+        # if present the prompt starts with the style
         style_text = self.style_var.get()
         if style_text != ip.NONE_STRING:
             style_text += " of "
             self.prompt_text.insert('1.0', style_text)
 
+        # if present add the camera angle
         angle_text = self.angle_var.get()
         if angle_text != ip.NONE_STRING:
             angle_text = ", " + angle_text
             self.prompt_text.insert(tk.END, angle_text)
 
+        # if present add the light condition
         light_text = self.light_var.get()
         if light_text != ip.NONE_STRING:
             light_text = ", " + light_text
             self.prompt_text.insert(tk.END, light_text)
 
+        # if present add the color palette
         color_text = self.color_var.get()
         if color_text != ip.NONE_STRING:
             color_text = ", " + color_text
             self.prompt_text.insert(tk.END, color_text)
 
+        # if present add a special effect
         effect_text = self.effect_var.get()
         if effect_text != ip.NONE_STRING:
             effect_text = ", " + effect_text
             self.prompt_text.insert(tk.END, effect_text)
 
+        # if present add additional prompt information
         misc_text = self.misc_var.get()
         if misc_text != ip.NONE_STRING:
             misc_text = ", " + misc_text
@@ -173,12 +181,13 @@ class SDPromptGeneratorApp(tk.Frame):
 
 
     def CopyPrompt(self):
+        # copy the prompt text to the Windows clipboard
         text_to_copy = self.prompt_text.get('1.0', tk.END)
         cb.copy(text_to_copy)
-        # print("Copy Prompt to Clipboard")
+
 
     def Randomize(self):
-        # print("Randomize")
+        # set the drop down items to random elements
         self.style_var.set(rd.choice(self.style_list))
         self.angle_var.set(rd.choice(self.angle_list))
         self.light_var.set(rd.choice(self.light_list))
@@ -188,7 +197,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.misc_var.set(rd.choice(self.misc_list))
 
     def Clear(self):
-        # print("Clear")
+        # clear the prompt text
         self.prompt_text.delete('1.0', tk.END)
 
 
