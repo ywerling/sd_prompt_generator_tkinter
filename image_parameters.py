@@ -60,7 +60,9 @@ lighting_list = [NONE_STRING,
 color_palette_list = [NONE_STRING,
                       "black and white",
                       "monochrome",
+                      "neon colors",
                       "pastel colors",
+                      "polychromatic",
                       "saturated colors",
                       "vibrant colors"]
 

@@ -31,36 +31,45 @@ class SDPromptGeneratorApp(tk.Frame):
 
         # create labels
         self.subject_label = tk.Label(self.parent,
-                                           text="Subject:",
-                                           font=(TEXT_FONT, TEXT_SIZE))
+                                      text="Subject:",
+                                      font=(TEXT_FONT, TEXT_SIZE),
+                                      anchor='w',
+                                      justify="left")
         self.subject_label.grid(row=0, column=0)
         self.background_label = tk.Label(self.parent,
-                                           text="Background:",
-                                           font=(TEXT_FONT, TEXT_SIZE))
+                                         text="Background:",
+                                         font=(TEXT_FONT, TEXT_SIZE),
+                                         justify="left")
         self.background_label.grid(row=1, column=0)
         self.style_label = tk.Label(self.parent,
-                                           text="Style:",
-                                           font=(TEXT_FONT, TEXT_SIZE))
+                                    text="Style:",
+                                    font=(TEXT_FONT, TEXT_SIZE),
+                                    justify="left")
         self.style_label.grid(row=2, column=0)
         self.angle_label = tk.Label(self.parent,
-                                           text="Angle:",
-                                           font=(TEXT_FONT, TEXT_SIZE))
+                                    text="Angle:",
+                                    font=(TEXT_FONT, TEXT_SIZE),
+                                    justify="left")
         self.angle_label.grid(row=3, column=0)
         self.lighting_label = tk.Label(self.parent,
-                                           text="Lighting:",
-                                           font=(TEXT_FONT, TEXT_SIZE))
+                                       text="Lighting:",
+                                       font=(TEXT_FONT, TEXT_SIZE),
+                                       justify="left")
         self.lighting_label.grid(row=4, column=0)
         self.palette_label = tk.Label(self.parent,
-                                           text="Palette:",
-                                           font=(TEXT_FONT, TEXT_SIZE))
+                                      text="Palette:",
+                                      font=(TEXT_FONT, TEXT_SIZE),
+                                      justify="left")
         self.palette_label.grid(row=5, column=0)
         self.effect_label = tk.Label(self.parent,
-                                           text="Special Effect:",
-                                           font=(TEXT_FONT, TEXT_SIZE))
+                                     text="Special Effect:",
+                                     font=(TEXT_FONT, TEXT_SIZE),
+                                     justify="left")
         self.effect_label.grid(row=6, column=0)
         self.feature_label = tk.Label(self.parent,
-                                           text="Additional Features:",
-                                           font=(TEXT_FONT, TEXT_SIZE))
+                                      text="Additional Features:",
+                                      font=(TEXT_FONT, TEXT_SIZE),
+                                      justify="left")
         self.feature_label.grid(row=7, column=0)
 
         # create  text entry boxes
