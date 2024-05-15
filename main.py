@@ -90,18 +90,20 @@ class SDPromptGeneratorApp(tk.Frame):
         self.effect_menu = tk.OptionMenu(self.parent, self.effect_var, *self.effect_list)
         self.effect_menu.grid(row=7, column=1)
 
+        self.create_buttons()
+
         # create buttons
-        self.generate_button = tk.Button(self.parent, text="Generate Prompt", command=self.generate_prompt)
-        self.generate_button.grid(row=1, column=2)
-
-        self.copy_button = tk.Button(self.parent, text="Copy to Clipboard", command=self.copy_prompt)
-        self.copy_button.grid(row=2, column=2)
-
-        self.random_button = tk.Button(self.parent, text="Randomize", command=self.randomize)
-        self.random_button.grid(row=3, column=2)
-
-        self.clear_button = tk.Button(self.parent, text="Clear", command=self.clear)
-        self.clear_button.grid(row=4, column=2)
+        # self.generate_button = tk.Button(self.parent, text="Generate Prompt", command=self.generate_prompt)
+        # self.generate_button.grid(row=1, column=2)
+        #
+        # self.copy_button = tk.Button(self.parent, text="Copy to Clipboard", command=self.copy_prompt)
+        # self.copy_button.grid(row=2, column=2)
+        #
+        # self.random_button = tk.Button(self.parent, text="Randomize", command=self.randomize)
+        # self.random_button.grid(row=3, column=2)
+        #
+        # self.clear_button = tk.Button(self.parent, text="Clear", command=self.clear)
+        # self.clear_button.grid(row=4, column=2)
 
         # create prompt editor
         self.prompt_text = tk.Text(self.parent, height=8)
@@ -110,8 +112,20 @@ class SDPromptGeneratorApp(tk.Frame):
     # def style_func(self,value):
     #     return value
 
+    def create_buttons(self):
+        buttons = [
+            ("Generate Prompt", self.generate_prompt),
+            ("Copy Prompt", self.copy_prompt),
+            ("Randomize", self.randomize),
+            ("Clear", self.clear_prompt)
+        ]
+
+        for i, (text, command) in enumerate(buttons):
+            tk.Button(self.parent, text=text, command=command).grid(row=i, column=2, padx=5, pady=5, sticky='ew')
+
+
     def generate_prompt(self):
-        self.clear()
+        self.clear_prompt()
 
         # start with the subject
         subject_text = self.subject_entry.get()
@@ -176,7 +190,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.effect_var.set(rd.choice(self.effect_list))
         self.misc_var.set(rd.choice(self.misc_list))
 
-    def clear(self):
+    def clear_prompt(self):
         # clear the prompt text
         self.prompt_text.delete('1.0', tk.END)
 
