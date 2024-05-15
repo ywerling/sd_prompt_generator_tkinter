@@ -4,7 +4,7 @@
 NONE_STRING = "-----"
 
 # styles supported by Stable Diffusion
-style_list = (NONE_STRING,
+STYLE_LIST = (NONE_STRING,
               "acrylic painting",
               "anime",
               "cartoon art",
@@ -23,7 +23,7 @@ style_list = (NONE_STRING,
               "woodcut")
 
 # specifying the camera angle gives more realistic images
-camera_angle_list = [NONE_STRING,
+CAMERA_ANGLE_LIST = [NONE_STRING,
                      "aerial view",
                      "close-up",
                      "dutch angle",
@@ -34,7 +34,7 @@ camera_angle_list = [NONE_STRING,
                      "wide angle"]
 
 # lights are an important aspect of both photography and painting
-lighting_list = [NONE_STRING,
+LIGHTING_LIST = [NONE_STRING,
                  "accent lighting",
                  "ambient lighting",
                  "backlight",
@@ -57,7 +57,7 @@ lighting_list = [NONE_STRING,
                  "ultraviolet"]
 
 # it is possible to adjust the color
-color_palette_list = [NONE_STRING,
+COLOR_PALETTE_LIST = [NONE_STRING,
                       "black and white",
                       "monochrome",
                       "neon colors",
@@ -67,7 +67,7 @@ color_palette_list = [NONE_STRING,
                       "vibrant colors"]
 
 # a few additional commands to modify an image
-additional_features_list = [NONE_STRING,
+ADDITIONAL_FEATURES_LIST = [NONE_STRING,
                             "4K",
                             "8K",
                             "detailed skin",
@@ -77,7 +77,7 @@ additional_features_list = [NONE_STRING,
                             "photorealistic"]
 
 # some light effects to be played with for some surrealistic images
-special_effects_list = [NONE_STRING,
+SPECIAL_EFFECTS_LIST = [NONE_STRING,
                         "aurora glimmer",
                         "bioluminescent",
                         "chemiluminescent",
@@ -88,12 +88,3 @@ special_effects_list = [NONE_STRING,
                         "phosphorescent shimmer",
                         "thermoluminescent"
                         ]
-
-
-
-
-
-
-
-
-
