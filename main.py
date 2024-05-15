@@ -13,23 +13,35 @@ class SDPromptGeneratorApp(tk.Frame):
     def __init__(self, parent, *args, **kwargs):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
+        self.configure_ui()
+        self.create_widgets()
 
         # create the tkinter UI basic structure
+    def configure_ui(self):
         self.config(padx=600, pady=800)
+
+        #columns
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=2)
         self.columnconfigure(2, weight=1)
         self.columnconfigure(3, weight=4)
-        self.rowconfigure(0, weight=1)
-        self.rowconfigure(1, weight=1)
-        self.rowconfigure(2, weight=1)
-        self.rowconfigure(3, weight=1)
-        self.rowconfigure(4, weight=1)
-        self.rowconfigure(5, weight=1)
-        self.rowconfigure(6, weight=1)
-        self.rowconfigure(7, weight=1)
 
-        # create labels
+        #rows
+        for i in range(8):
+            self.rowconfigure(i, weight=1)
+
+        # if the rows need various weights uncomment and adjust
+        # self.rowconfigure(0, weight=1)
+        # self.rowconfigure(1, weight=1)
+        # self.rowconfigure(2, weight=1)
+        # self.rowconfigure(3, weight=1)
+        # self.rowconfigure(4, weight=1)
+        # self.rowconfigure(5, weight=1)
+        # self.rowconfigure(6, weight=1)
+        # self.rowconfigure(7, weight=1)
+
+    def create_widgets(self):
+    # create labels
         self.subject_label = tk.Label(self.parent,
                                       text="Subject:",
                                       font=(TEXT_FONT, TEXT_SIZE),
