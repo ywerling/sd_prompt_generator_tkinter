@@ -123,7 +123,6 @@ class SDPromptGeneratorApp(tk.Frame):
         for i, (text, command) in enumerate(buttons):
             tk.Button(self.parent, text=text, command=command).grid(row=i, column=2, padx=5, pady=5, sticky='ew')
 
-
     def generate_prompt(self):
         self.clear_prompt()
 
