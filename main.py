@@ -43,7 +43,8 @@ class SDPromptGeneratorApp(tk.Frame):
 
     def create_widgets(self):
         # create labels
-        labels = ["Subject:", "Background:", "Style:", "Angle:", "Light Condition:", "Color Palette:", "Special Effect:", "Miscellaneous:"]
+        labels = ["Subject:", "Background:", "Style:", "Angle:", "Light Condition:", "Color Palette:",
+                  "Special Effect:", "Miscellaneous:"]
         for i, label in enumerate(labels):
             tk.Label(self.parent, text=label, font=(TEXT_FONT, TEXT_SIZE), anchor='w').grid(row=i, column=0, sticky='w')
 
