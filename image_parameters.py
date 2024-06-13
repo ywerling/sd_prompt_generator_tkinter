@@ -88,3 +88,16 @@ SPECIAL_EFFECTS_LIST = [NONE_STRING,
                         "phosphorescent shimmer",
                         "thermoluminescent"
                         ]
+
+COLOR_VIBES_LIST = [NONE_STRING,
+                    "Celestial Harmony",
+                    "Enchanted Forest",
+                    "Sunset Serenity",
+                    "Galactic Nebula",
+                    "Cyberpunk Dream",
+                    "Desert Mirage",
+                    "Aurora Borealis",
+                    "Retro Futurism",
+                    "Tropical Bliss",
+                    "Midnight Jazz",
+]

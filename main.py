@@ -28,7 +28,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.columnconfigure(3, weight=4)
 
         # rows
-        for i in range(8):
+        for i in range(9):
             self.rowconfigure(i, weight=1)
 
         # if the rows need various weights uncomment and adjust
@@ -44,7 +44,7 @@ class SDPromptGeneratorApp(tk.Frame):
     def create_widgets(self):
         # create labels
         labels = ["Subject:", "Background:", "Style:", "Angle:", "Light Condition:", "Color Palette:",
-                  "Special Effect:", "Miscellaneous:"]
+                  "Special Effect:", "Miscellaneous:", "Color Vibe"]
         for i, label in enumerate(labels):
             tk.Label(self.parent, text=label, font=(TEXT_FONT, TEXT_SIZE), anchor='w').grid(row=i, column=0, sticky='w')
 
@@ -90,6 +90,14 @@ class SDPromptGeneratorApp(tk.Frame):
         self.effect_var.set(ip.NONE_STRING)
         self.effect_menu = tk.OptionMenu(self.parent, self.effect_var, *self.effect_list)
         self.effect_menu.grid(row=7, column=1)
+
+        self.vibe_list = ip.COLOR_VIBES_LIST
+        self.vibe_var = tk.StringVar()
+        self.vibe_var.set(ip.NONE_STRING)
+        self.vibe_menu = tk.OptionMenu(self.parent, self.vibe_var, *self.vibe_list)
+        self.vibe_menu.grid(row=8, column=1)
+
+
 
         self.create_buttons()
 
@@ -169,6 +177,12 @@ class SDPromptGeneratorApp(tk.Frame):
             effect_text = ", " + effect_text
             self.prompt_text.insert(tk.END, effect_text)
 
+        # if present add a color vibe
+        vibe_text = self.vibe_var.get()
+        if vibe_text != ip.COLOR_VIBES_LIST:
+            vibe_text = ", " + vibe_text + " color vibe"
+            self.prompt_text.insert(tk.END, vibe_text)
+
         # if present add additional prompt information
         misc_text = self.misc_var.get()
         if misc_text != ip.NONE_STRING:
@@ -189,6 +203,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.color_var.set(rd.choice(self.color_list))
         self.effect_var.set(rd.choice(self.effect_list))
         self.misc_var.set(rd.choice(self.misc_list))
+        self.vibe_var.set(rd.choice(self.vibe_list))
 
     def clear_prompt(self):
         # clear the prompt text
