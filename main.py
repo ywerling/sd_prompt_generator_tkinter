@@ -118,6 +118,8 @@ class SDPromptGeneratorApp(tk.Frame):
         self.prompt_text = tk.Text(self.parent, height=8)
         self.prompt_text.grid(row=2, column=3)
 
+
+
     # def style_func(self,value):
     #     return value
 
