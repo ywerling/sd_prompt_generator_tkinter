@@ -122,3 +122,19 @@ ART_MOVEMENTS_LIST = [NONE_STRING,
                     "Moorish",
                     "Expressionism",
 ]
+
+COMPOSITIONS_LIST = [NONE_STRING,
+                     "Rule of Thirds",
+                     "Symmetrical",
+                     "Leading Lines",
+                     "Circular",
+                     "Golden Ratio",
+                     "Framing",
+                     "Vertical",
+                     "Horizontal",
+                     "Negative Space",
+                     "Contrast",
+                     "Geometric Pattern",
+                     "Intricate Pattern",
+
+]
