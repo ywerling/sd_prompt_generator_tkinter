@@ -28,7 +28,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.columnconfigure(3, weight=4)
 
         # rows
-        for i in range(10):
+        for i in range(12):
             self.rowconfigure(i, weight=1)
 
         # if the rows need various weights uncomment and adjust
@@ -44,7 +44,7 @@ class SDPromptGeneratorApp(tk.Frame):
     def create_widgets(self):
         # create labels
         labels = ["Subject:", "Background:", "Style:", "Angle:", "Light Condition:", "Color Palette:",
-                  "Special Effect:", "Miscellaneous:", "Color Vibe:", "Art Movement"]
+                  "Special Effect:", "Miscellaneous:", "Color Vibe:", "Art Movement:", "Composition:"]
         for i, label in enumerate(labels):
             tk.Label(self.parent, text=label, font=(TEXT_FONT, TEXT_SIZE), anchor='w').grid(row=i, column=0, sticky='w')
 
@@ -102,6 +102,12 @@ class SDPromptGeneratorApp(tk.Frame):
         self.movement_var.set(ip.NONE_STRING)
         self.movement_menu = tk.OptionMenu(self.parent, self.movement_var, *self.movement_list)
         self.movement_menu.grid(row=9, column=1)
+
+        self.composition_list = ip.COMPOSITIONS_LIST
+        self.composition_var = tk.StringVar()
+        self.composition_var.set(ip.NONE_STRING)
+        self.composition_menu = tk.OptionMenu(self.parent, self.composition_var, *self.composition_list)
+        self.composition_menu.grid(row=10, column=1)
 
 
 
@@ -185,6 +191,12 @@ class SDPromptGeneratorApp(tk.Frame):
             movement_text = ", " + movement_text
             self.prompt_text.insert(tk.END, movement_text)
 
+        # if present add composition information
+        composition_text = self.composition_var.get()
+        if composition_text != ip.NONE_STRING:
+            composition_text = ", (" + composition_text + " composition)"
+            self.prompt_text.insert(tk.END, composition_text)
+
     def copy_prompt(self):
         # copy the prompt text to the Windows clipboard
         text_to_copy = self.prompt_text.get('1.0', tk.END)
@@ -201,6 +213,7 @@ class SDPromptGeneratorApp(tk.Frame):
         self.misc_var.set(rd.choice(self.misc_list))
         self.vibe_var.set(rd.choice(self.vibe_list))
         self.movement_var.set(rd.choice(self.movement_list))
+        self.composition_var.set(rd.choice(self.composition_list))
 
     def clear_prompt(self):
         # clear the prompt text
