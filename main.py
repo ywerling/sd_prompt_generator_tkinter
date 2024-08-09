@@ -101,19 +101,6 @@ class SDPromptGeneratorApp(tk.Frame):
 
         self.create_buttons()
 
-        # create buttons
-        # self.generate_button = tk.Button(self.parent, text="Generate Prompt", command=self.generate_prompt)
-        # self.generate_button.grid(row=1, column=2)
-        #
-        # self.copy_button = tk.Button(self.parent, text="Copy to Clipboard", command=self.copy_prompt)
-        # self.copy_button.grid(row=2, column=2)
-        #
-        # self.random_button = tk.Button(self.parent, text="Randomize", command=self.randomize)
-        # self.random_button.grid(row=3, column=2)
-        #
-        # self.clear_button = tk.Button(self.parent, text="Clear", command=self.clear)
-        # self.clear_button.grid(row=4, column=2)
-
         # create prompt editor
         self.prompt_text = tk.Text(self.parent, height=8)
         self.prompt_text.grid(row=2, column=3)
